@@ -1,1 +1,615 @@
+/* --- IMPORTS & FONTS --- */
+/* On garde Poppins, c'est moderne et lisible */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
+:root {
+    /* PALETTE DARK SPORT (Noir & Rouge) */
+    --primary: #000000;      /* Noir Pur (Navbar, Footer) */
+    --accent: #e63946;       /* Rouge Course (Boutons, Actions) */
+    
+    --success: #10b981;      /* Vert */
+    --danger: #b91c1c;       /* Rouge Foncé */
+    
+    /* C'est ici que ça change tout : */
+    --bg: #ff1414;           /* Fond de page : NOIR CARBONE (au lieu de blanc) */
+    --card-bg: #ffffff;      /* Fond des cartes : GRIS FONCÉ */
+    
+    --text: #ffffff;         /* Texte : BLANC */
+    --light-text: #9ca3af;   /* Texte secondaire : Gris */
+}
+
+/* --- BASES --- */
+/* --- BASES --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    
+    /* HERE IS THE CHANGE: */
+    /* 1. We add a dark gradient overlay (0.85 opacity) so text is readable */
+    /* 2. We load the image */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), url('../uploads/bg.jpg');
+    
+    /* 3. "Fixed" makes the image stay still while you scroll (Parallax effect) */
+    background-attachment: fixed; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: -0.5px; }
+a { text-decoration: none; transition: all 0.3s ease; }
+
+/* --- NAVBAR --- */
+.navbar {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--accent); /* Ligne rouge sous le menu */
+}
+
+.nav-brand {
+    font-size: 1.8rem;
+    font-weight: 800; /* Plus gras */
+    letter-spacing: 1px;
+    font-style: italic; /* Style rapide/sport */
+}
+
+.nav-links a {
+    color: #d1d5db;
+    margin-left: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+} /* <--- AJOUTEZ CECI */
+
+.nav-links a:hover { color: var(--accent); }
+/* --- HERO SECTION --- */
+.hero {
+    /* Fond noir avec dégradé */
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url('../uploads/bdg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.h1 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; font-style: italic; }
+.hero p { font-size: 1.2rem; color: var(--light-text); font-weight: 300; }
+
+/* --- CONTENEURS --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* --- CARROUSEL / MARQUEE --- */
+.marquee-container {
+    overflow: hidden;
+    background: #000; /* Fond totalement noir */
+    padding: 30px 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    position: relative;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: scroll 40s linear infinite;
+}
+.marquee-content:hover { animation-play-state: paused; }
+
+.marquee-content img {
+    height: 400px;
+    width: 600px;
+    object-fit: cover;
+    margin: 0 15px;
+    border-radius: 4px; /* Coins moins arrondis pour un look plus "tech" */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    vertical-align: middle;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    border: 1px solid #333;
+}
+
+.marquee-content img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+    border-color: var(--accent); /* Bordure rouge au survol */
+    z-index: 10;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- GRILLE DE VOITURES --- */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.car-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    
+    /* MODIFICATION ICI : On met la bordure en ROUGE par défaut */
+    border: 1px solid var(--accent); 
+    
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(230, 57, 70, 0.3); /* Ombre rouge au survol pour l'effet */
+    /* Plus besoin de changer la couleur de bordure ici puisqu'elle est déjà rouge */
+}
+
+.car-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.card-price {
+    font-size: 1.5rem;
+    color: var(--primary); /* Prix en noir sur le thème sport */
+    font-weight: 800;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+/* --- LAYOUT SIDEBAR --- */
+.main-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.content-area { flex: 3; }
+
+.sidebar {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 100px;
+    border: 1px solid #e5e7eb;
+}
+
+/* --- BOUTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--primary); /* Noir par défaut */
+    color: white;
+    border-radius: 4px; /* Coins plus carrés */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+.btn:hover { background: var(--accent); color: white; transform: skewX(-10deg); /* Petit effet de vitesse */ }
+
+.btn-green { background: var(--success); }
+.btn-green:hover { background: #047857; transform: none; }
+
+.btn-blue { background: var(--accent); /* Rouge pour l'action principale */ }
+.btn-blue:hover { background: #b91c1c; transform: skewX(-10deg); }
+
+.btn-red { background: var(--danger); }
+.btn-red:hover { background: #991b1b; transform: none; }
+
+.btn-sm { padding: 6px 15px; font-size: 0.75rem; }
+
+/* Gros bouton appel à l'action (Accueil) */
+.cta-button {
+    display: inline-block;
+    background: var(--accent); /* Rouge */
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 50px; /* On garde arrondi ici pour le contraste */
+    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4); /* Ombre rouge */
+    transition: all 0.3s;
+    font-style: italic;
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.6);
+    background: #ff4d5a;
+}
+
+/* Boutons Réseaux Sociaux */
+.social-btn {
+    display: block; width: 100%; padding: 12px; margin-bottom: 10px;
+    text-align: center; border-radius: 4px; color: white; font-weight: 600; box-sizing: border-box;
+}
+.social-fb { background: #1877f2; }
+.social-insta { background: #e4405f; }
+.social-whatsapp { background: #25d366; }
+
+/* --- SECTIONS LANDING PAGE --- */
+.section { padding: 100px 20px; text-align: center; }
+.section-dark { background-color: #111; color: white; }
+.section-light { background-color: rgb(255, 255, 255); color: var(--primary); }
+.section h2 { font-size: 2.5rem; text-transform: uppercase; margin-bottom: 50px; position: relative; display: inline-block;}
+
+/* Petite ligne rouge sous les titres H2 */
+.section h2::after {
+    content: ''; display: block; width: 60px; height: 4px; background: var(--accent);
+    margin: 10px auto 0;
+}
+
+/* Services Grid */
+.services-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 8px;
+    width: 300px;
+    transition: transform 0.3s;
+}
+.service-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.08); border-color: var(--accent); }
+.service-icon { font-size: 3rem; margin-bottom: 25px; color: var(--accent); }
+
+/* --- FORMULAIRES & RECHERCHE --- */
+input, select, textarea {
+    width: 100%; padding: 15px; margin: 8px 0 20px 0;
+    border: 2px solid #e5e7eb; border-radius: 4px; font-family: inherit; box-sizing: border-box;
+    background: #f9fafb; transition: border 0.3s;
+}
+input:focus, textarea:focus {
+    outline: none; border-color: var(--accent); background: white;
+}
+
+.search-bar {
+    background: white; padding: 25px; border-radius: 8px; margin-bottom: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; gap: 15px; flex-wrap: wrap; align-items: center;
+    border-top: 4px solid var(--accent);
+}
+.search-bar input, .search-bar select { margin: 0; flex: 1; }
+
+.contact-form { max-width: 600px; margin: 0 auto; text-align: left; }
+.contact-input { background: #222; border: 1px solid #333; color: white; }
+.contact-input:focus { background: #333; border-color: var(--accent); }
+
+.form-container {
+    background: white; padding: 50px; border-radius: 8px; max-width: 500px;
+    margin: 50px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary);
+}
+
+/* --- TABLES ADMIN --- */
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+th { background: var(--primary); color: white; padding: 18px; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+td { padding: 18px; border-bottom: 1px solid #f3f4f6; }
+.header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #eee; }
+
+/* --- DÉTAILS --- */
+.details-flex { display: flex; gap: 50px; background: white; padding: 50px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+/* --- PROMOS & PRIX --- */
+.badge-promo {
+    position: absolute; top: 15px; right: 15px;
+    background: var(--accent); color: white;
+    padding: 8px 15px; border-radius: 4px;
+    font-weight: 800; font-size: 0.9rem; z-index: 10;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+    transform: rotate(3deg); /* Petit style "sticker" */
+}
+.old-price { text-decoration: line-through; color: #9ca3af; font-size: 1rem; margin-right: 15px; }
+.new-price { color: var(--accent); font-weight: 800; font-size: 1.6rem; }
+
+/* --- LOYALTY CARD --- */
+.loyalty-card {
+    background: linear-gradient(135deg, #111, #333); /* Carte Noire Premium */
+    color: white; padding: 50px; border-radius: 12px;
+    max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid #444;
+}
+
+/* --- FAQ --- */
+.faq-item { background: rgba(255,255,255,0.03); margin-bottom: 15px; border-radius: 4px; border: 1px solid #333; padding: 25px; }
+.faq-question { font-weight: 700; color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
+.faq-answer { color: #d1d5db; font-size: 1rem; }
+
+/* --- TÉMOIGNAGES --- */
+/* --- TÉMOIGNAGES (SCROLL HORIZONTAL) --- */
+.testimonials-grid {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    padding-bottom: 20px; /* Espace pour la barre de défilement */
+    scroll-behavior: smooth;
+    justify-content: flex-start; /* Aligne tout à gauche */
+    -webkit-overflow-scrolling: touch; /* Défilement fluide sur mobile */
+}
+
+/* On cache la barre de défilement moche mais on garde le scroll */
+.testimonials-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.testimonials-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.testimonials-grid::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 300px; /* Largeur fixe pour qu'ils ne s'écrasent pas */
+    max-width: 300px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    border-bottom: 4px solid var(--accent);
+    flex-shrink: 0; /* Empêche le rétrécissement */
+    color: #111; /* Texte noir forcé */
+}
+
+/* Formulaire d'ajout d'avis */
+.review-form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+    color: #111;
+}
+.sidebar h3, .sidebar strong {
+    color: #000000; /* Titres noirs */
+}
+.sidebar p, .sidebar a {
+    color: #333333; /* Gris foncé pour le texte courant */
+}
+
+/* 2. Formulaires (Connexion, Contact, Admin) */
+.form-container, .contact-input {
+    color: #111111;
+}
+/* On force le fond des champs de texte à être clair avec écriture noire */
+input, select, textarea, .contact-input {
+    background-color: #f9fafb;
+    color: #000000 !important;
+    border-color: #ccc;
+}
+input::placeholder, textarea::placeholder {
+    color: #666;
+}
+
+/* 3. Tableaux (Admin Dashboard) */
+table {
+    color: #111111;
+}
+/* Les liens dans le tableau (ex: email) doivent être lisibles */
+table a {
+    color: var(--accent); /* Rouge */
+    font-weight: bold;
+}
+
+/* 4. Page Détails (La grande boîte blanche) */
+.details-flex {
+    color: #111111;
+}
+.details-flex h1, .details-flex h3 {
+    color: #000000;
+}
+.details-flex p, .details-flex .old-price {
+    color: #4b5563; /* Gris foncé */
+}
+
+/* 5. Barre de Recherche (Vitrine) */
+.search-bar {
+    color: #111111;
+}
+
+/* --- FOOTER STYLE SPORT (LARGE & ROUGE) --- */
+
+.main-footer {
+    /* Fond noir semi-transparent (pour voir les hexagones) */
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(5px);
+    
+    /* ESPACEMENT (Le point crucial) */
+    margin-top: 120px !important; /* Pousse le footer vers le bas (loin de la zone blanche) */
+    padding-top: 80px;            /* Espace interne au dessus du titre */
+    padding-bottom: 40px;
+    
+    border-top: 5px solid var(--accent); /* Grosse ligne rouge */
+    color: white !important;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between; /* Écarte les éléments au maximum */
+    align-items: flex-start;        /* Aligne tout en haut */
+    flex-wrap: wrap;
+    gap: 50px;                      /* Espace entre les colonnes */
+    width: 100%;
+    max-width: 1400px;              /* On autorise une plus grande largeur */
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1;                /* Chaque colonne prend la même place */
+    min-width: 280px;       /* Évite que ce soit trop écrasé */
+}
+
+/* Titres */
+.footer-col h3 {
+    color: white;
+    font-size: 1.5rem;      /* Titre plus gros */
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-style: italic;
+    border-left: 5px solid var(--accent); /* Bordure rouge plus épaisse */
+    padding-left: 15px;
+}
+
+/* Liste des liens de contact */
+.footer-links {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 20px;    /* Plus d'espace entre les lignes */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #e5e5e5;
+    font-size: 1.1rem;      /* Texte plus grand */
+}
+
+/* Icônes dans la liste contact (map, phone...) */
+.footer-links i {
+    color: var(--accent);   /* Icônes rouges */
+    font-size: 1.3rem;
+    width: 30px;
+    text-align: center;
+}
+
+/* --- GROSSES ICÔNES RÉSEAUX SOCIAUX (ROUGES) --- */
+.social-icons {
+    display: flex;
+    gap: 20px;              /* Espace entre les boutons */
+    margin-top: 10px;
+}
+
+.social-link {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    
+    /* TAILLE AUGMENTÉE */
+    width: 65px;
+    height: 65px;
+    font-size: 1.8rem;      /* Logo intérieur plus grand */
+    
+    /* STYLE ROUGE SPORT */
+    background: var(--accent) !important; /* Fond ROUGE par défaut */
+    color: white !important;
+    
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet rebond */
+    border: 2px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4); /* Ombre rouge */
+}
+
+/* Animation au survol */
+.social-link:hover {
+    transform: translateY(-8px) scale(1.1); /* Monte et grossit */
+    background: white !important;           /* Devient blanc */
+    color: var(--accent) !important;        /* Icône devient rouge */
+    border-color: white;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* Éclat blanc */
+}
+
+/* Copyright tout en bas */
+.footer-bottom {
+    background: black !important;
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 50px; /* Espace entre les colonnes et le copyright */
+}
+
+/* Responsive : Sur mobile, on empile */
+@media (max-width: 900px) {
+    .footer-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-col h3 {
+        border-left: none;
+        border-bottom: 3px solid var(--accent);
+        display: inline-block;
+        padding-bottom: 5px;
+        padding-left: 0;
+    }
+    .footer-links li {
+        justify-content: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
+/* --- CORRECTIF BOUTONS ADMIN (FORCE LE TEXTE BLANC) --- */
+table .btn, 
+table .btn-blue, 
+table .btn-green, 
+table .btn-red, 
+table .btn-sm {
+    color: white !important; /* Force le texte en BLANC */
+    text-decoration: none;
+    opacity: 1;
+}
+
+/* S'assure que le survol reste lisible */
+table .btn:hover, 
+table .btn-sm:hover {
+    color: white !important;
+    opacity: 0.8; /* Légère transparence au survol */
+    transform: scale(1.05); /* Petit effet de zoom */
+}
