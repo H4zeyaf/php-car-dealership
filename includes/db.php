@@ -1,12 +1,11 @@
 <?php
 // --- CONFIGURATION TIDB CLOUD ---
 
-// Remplace ces valeurs par celles de ta console TiDB
-$host = 'gateway01.eu-central-1.prod.aws.tidbcloud.com'; // Ton Host TiDB
-$port = '4000'; // Port standard TiDB
-$dbname = 'car_dealership'; // Le nom de ta base
-$user = 'WyjkLgtks66aSTW.root'; // Ton user complet
-$pass = '400aCdOiGs5AwKsD'; // Ton mot de passe
+$host = 'xxx';
+$port = 'xxxx';
+$dbname = 'xxx';
+$user = 'xxx';
+$pass = 'xxx';
 
 try {
     // Configuration de la connexion sécurisée (SSL)
@@ -27,4 +26,5 @@ try {
     // En cas d'erreur, on arrête tout et on affiche le message
     die("❌ Erreur de connexion TiDB : " . $e->getMessage());
 }
+
 ?>
