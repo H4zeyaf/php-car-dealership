@@ -1,0 +1,9 @@
+# Security Logs
+# Format: JSON with timestamp, event, IP, user_id, user_agent, context
+{"timestamp":"2026-01-16 00:07:56","event":"CLIENT_LOGIN_FAILED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"email":"g@gg.com","ip":"::1"}}
+{"timestamp":"2026-01-16 00:07:59","event":"CLIENT_LOGIN_FAILED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"email":"g@gg.com","ip":"::1"}}
+{"timestamp":"2026-01-16 00:08:01","event":"CLIENT_LOGIN_FAILED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"email":"g@gg.com","ip":"::1"}}
+{"timestamp":"2026-01-16 00:08:04","event":"CLIENT_LOGIN_FAILED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"email":"g@gg.com","ip":"::1"}}
+{"timestamp":"2026-01-16 00:08:06","event":"CLIENT_LOGIN_FAILED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"email":"g@gg.com","ip":"::1"}}
+{"timestamp":"2026-01-16 00:08:09","event":"RATE_LIMIT_EXCEEDED","ip":"::1","user_id":"Guest","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"ip":"::1","page":"login_client.php"}}
+{"timestamp":"2026-01-16 02:13:57","event":"LOGIN_SUCCESS","ip":"::1","user_id":1,"user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/143.0.0.0 Safari\/537.36","context":{"username":"admin"}}
