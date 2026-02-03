@@ -2,11 +2,11 @@
 // --- CONFIGURATION TIDB CLOUD ---
 
 // Remplace ces valeurs par celles de ta console TiDB
-$host = 'gateway01.eu-central-1.prod.aws.tidbcloud.com'; // Ton Host TiDB
-$port = '4000'; // Port standard TiDB
-$dbname = 'car_dealership'; // Le nom de ta base
-$user = 'WyjkLgtks66aSTW.root'; // Ton user complet
-$pass = '400aCdOiGs5AwKsD'; // Ton mot de passe
+$host = 'xxx'; // Ton Host TiDB
+$port = 'xxxx'; // Port standard TiDB
+$dbname = 'xxx'; // Le nom de ta base
+$user = 'xxx'; // Ton user complet
+$pass = 'xxx'; // Ton mot de passe
 
 try {
     // Configuration de la connexion sécurisée (SSL)
